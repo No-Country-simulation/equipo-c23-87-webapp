@@ -1,22 +1,13 @@
 import React from "react";
 import '../ui/global.css';
 import Image from 'next/image';
+import Header from "./Header";
 
 export default function WebDevPath() {
   return (
     <div className="flex flex-col items-center w-full min-h-screen bg-white">
 
-      <div className="flex justify-between items-center w-full px-8 pt-2 pb-2">
-        <div className="flex gap-x-16">
-         <span>🔥</span>
-         <span>🥇</span>
-        </div>
-
-        <div className="flex gap-x-16">
-         <span>⚙️</span>
-         <span>👤</span>
-        </div>
-      </div>
+      <Header />
 
       {/* Header Section */}
       <div className="w-full bg-green-100 p-4 text-center">
