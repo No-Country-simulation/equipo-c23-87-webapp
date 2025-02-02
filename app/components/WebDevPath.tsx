@@ -8,7 +8,7 @@ import CylinderLevel from "./CylinderLevel";
 import { steps } from "../lib/steps";
 
 export default function WebDevPath() {
-  const handleLevelClick = (level) => {
+  const handleLevelClick = (level: number) => {
    alert(`Level ${level} clicked!`);
   }
 
