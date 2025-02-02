@@ -1,5 +1,6 @@
 import React from "react";
 import '../ui/global.css';
+import Image from 'next/image';
 
 export default function WebDevPath() {
   return (
@@ -16,7 +17,7 @@ export default function WebDevPath() {
       <div className="relative flex flex-col items-center mt-10 space-y-10">
         {/* Application Submission */}
         <div className="flex items-center space-x-4">
-          <img src="/character.png" alt="Character" className="w-12 h-12" />
+          <Image src="/character.png" alt="Character" className="hidden md:block" width={90} height={90} />
           <div className="flex items-center space-x-2">
             <div className="w-12 h-12 bg-green-200 rounded-full flex items-center justify-center">
               <button className="text-green-600 text-lg">▶</button>
@@ -24,6 +25,7 @@ export default function WebDevPath() {
             <span className="text-lg font-semibold">Application Submission</span>
           </div>
         </div>
+<div className="h-10 border-l-2 border-dashed border-gray-400"></div>
 
         {/* Dashed Line & Steps */}
         <div className="flex flex-col items-center space-y-10">
