@@ -1,9 +1,17 @@
+"use client";
+
 import React from "react";
 import '../ui/global.css';
 import Image from 'next/image';
 import Header from "./Header";
+import CylinderLevel from "./CylinderLevel";
+import { steps } from "../lib/steps";
 
 export default function WebDevPath() {
+  const handleLevelClick = (level) => {
+   alert(`Level ${level} clicked!`);
+  }
+
   return (
     <div className="flex flex-col items-center w-full min-h-screen bg-white">
 
@@ -29,27 +37,21 @@ export default function WebDevPath() {
             <span className="text-lg font-semibold">Application Submission</span>
           </div>
         </div>
-<div className="h-10 border-l-2 border-dashed border-gray-400"></div>
 
         {/* Dashed Line & Steps */}
         <div className="flex flex-col items-center space-y-10">
-          {[
-            "Screening Stage",
-            "Technical Interview",
-            "Behavioral and Cultural Fit Interviews",
-            "Offer Stage",
-            "Onboarding",
-          ].map((step, index) => (
-            <div key={index} className="flex flex-col items-center">
-              {/* Dashed Line */}
-              {index !== 0 && <div className="h-10 border-l-2 border-dashed border-gray-400"></div>}
-              {/* Step Circle */}
-              <div className="w-16 h-8 bg-gray-700 rounded-lg shadow-md"></div>
-              {/* Step Label */}
-              <p className="mt-2 text-sm text-gray-700">{step}</p>
-            </div>
-          ))}
-        </div>
+         {steps.map((step) => (
+          <div key={step.id} className="flex flex-col items-center">
+           {/* Dashed Line */}
+           {step.id !== 1 && <div className="h-10 border-l-2 border-dashed border-gray-400"></div>}
+           {/* Step Circle */}
+           <CylinderLevel level={step.id} onClick={() => handleLevelClick(step.id)} />
+           {/* Step Label */}
+           <p className="mt-2 text-sm text-gray-700">{step.name}</p>
+          </div>
+         ))}
+       </div>
+
       </div>
     </div>
   );
