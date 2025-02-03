@@ -28,14 +28,8 @@ export default function WebDevPath() {
       {/* Path Container */}
       <div className="relative flex flex-col items-center mt-10 space-y-10">
         {/* Application Submission */}
-        <div className="flex items-center space-x-4">
+        <div className="flex space-x-4">
           <Image src="/character.png" alt="Character" className="hidden md:block" width={90} height={90} />
-          <div className="flex items-center space-x-2">
-            <div className="w-12 h-12 bg-green-200 rounded-full flex items-center justify-center">
-              <button className="text-green-600 text-lg">▶</button>
-            </div>
-            <span className="text-lg font-semibold">Application Submission</span>
-          </div>
         </div>
 
         {/* Dashed Line & Steps */}
@@ -45,7 +39,7 @@ export default function WebDevPath() {
            {/* Dashed Line */}
            {step.id !== 1 && <div className="h-10 border-l-2 border-dashed border-gray-400"></div>}
            {/* Step Circle */}
-           <CylinderLevel level={step.id} onClick={() => handleLevelClick(step.id)} />
+           <CylinderLevel level={step.id} status="locked" onClick={() => handleLevelClick(step.id)} />
            {/* Step Label */}
            <p className="mt-2 text-sm text-gray-700">{step.name}</p>
           </div>

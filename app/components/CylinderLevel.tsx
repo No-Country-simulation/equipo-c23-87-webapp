@@ -1,17 +1,39 @@
 "use client";
 
+import Image from "next/image";
+
 interface CylinderLevelProps {
-  level: number; // Explicitly define the type for `level`
-  onClick: () => void; // Explicitly define the type for `onClick`
+  level: number;
+  status: "available" | "locked"; // Add a status prop
+  onClick: () => void;
 }
 
-export default function CylinderLevel({ level, onClick }: CylinderLevelProps) {
+export default function CylinderLevel({ level, status, onClick }: CylinderLevelProps) {
+  // Determine the image source based on the status
+  let imageSrc: string;
+  switch (status) {
+    case "available":
+      imageSrc = "drum";
+      break;
+    case "locked":
+      imageSrc = "drum-disable";
+      break;
+    default:
+      imageSrc = "drum-disable"; // Default to locked if status is invalid
+  }
+
   return (
     <div
-      className="w-24 h-32 bg-gradient-to-b from-gray-400 via-gray-500 to-gray-600 rounded-t-full rounded-b-full shadow-lg transform flex items-center justify-center cursor-pointer hover:scale-105 transition-transform duration-200"
+      className="cursor-pointer"
       onClick={onClick}
     >
-      <span className="text-white font-bold text-xl">{level}</span>
+      <Image
+        src={`/${imageSrc}.png`}
+        alt={`Level ${level}`}
+        className="hidden md:block"
+        width={90}
+        height={90}
+      />
     </div>
   );
 }
