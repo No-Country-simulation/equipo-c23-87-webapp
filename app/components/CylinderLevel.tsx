@@ -24,8 +24,8 @@ export default function CylinderLevel({ level, status, onClick }: CylinderLevelP
 
   return (
     <div
-      className="cursor-pointer"
-      onClick={onClick}
+      className={`cursor-pointer ${status === "locked" ? "opacity-50 cursor-not-allowed" : ""}`}
+      onClick={status === "locked" ? undefined : onClick}
     >
       <Image
         src={`/${imageSrc}.png`}
