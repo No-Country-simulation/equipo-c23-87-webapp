@@ -44,10 +44,12 @@ export default function WebDevPath() {
          {
           steps.map((step) => {
             // Determine the status of the level
-            let status = "locked";
+            let status: "available" | "locked";
             if(step.id <= currentLevel) {
               status = "available";
-            } 
+            } else {
+	      status = "locked";
+	    }
  
             return (
              <div key={step.id} className="flex flex-col items-center">
