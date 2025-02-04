@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import '../ui/global.css';
 import Image from 'next/image';
 import Header from "./Header";
@@ -11,12 +11,20 @@ export default function WebDevPath() {
   // Track the user´s current level with the state
   const [currentLevel, setCurrentLevel] = useState(1);
 
+  useEffect(() => {
+  }, [currentLevel]);
+
   const handleLevelClick = (level: number) => {
    // If the level is the current level, move to the next one
    if(level === currentLevel && level < 5) {
-    setCurrentLevel((prevLevel) => {return prevLevel + 1});
+    setCurrentLevel((prevLevel) => {return prevLevel + 1});   
+    alert(`Congrats! you have passed the level ${level}, You advance to the ${currentLevel + 1} level 🥳`);
+   } else if(level > currentLevel) {
+    alert(`Please, you must first beat to the level ${level - 1}`);
    }
-   alert(`Congrats! you have passed the ${level}, You are currently in ${currentLevel} level 🥳`);
+   else { 
+    alert(`You´ve already passed this level. You are currently in ${currentLevel}`);
+   }
   }
 
   return (
