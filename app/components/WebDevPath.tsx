@@ -23,17 +23,17 @@ export default function WebDevPath() {
     alert(`Please, you must first beat to the level ${level - 1}`);
    }
    else { 
-    alert(`You´ve already passed this level. You are currently in ${currentLevel}`);
+    alert(`You´ve already passed this level. You are currently in level ${currentLevel}`);
    }
   }
 
   return (
-    <div className="flex flex-col items-center w-full min-h-screen bg-white">
+    <div className="flex flex-col items-center w-full px-4 min-h-screen bg-white">
 
       <Header />
 
       {/* Header Section */}
-      <div className="w-full bg-green-100 p-4 text-center">
+      <div className="w-full bg-green-100 p-4 text-center rounded-lg">
         <h1 className="text-xl font-bold">Web dev Path</h1>
         <p className="text-gray-600">
           Advance through different levels to enhance your technical English as a Web Developer!
