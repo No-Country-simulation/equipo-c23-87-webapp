@@ -48,9 +48,11 @@ export default function WebDevPath() {
         </div>
 
         {/* Dashed Line & Steps */}
-        <div className="flex flex-col items-center space-y-10">
-         {
-          steps.map((step) => {
+        <div className="flex flex-col items-center gap-8 mt-8">
+        {
+          steps.map((step, index) => {
+            // Determine zigzag pattern
+            const isLeft = index % 2 === 0; // Alternate left and right positions
             // Determine the status of the level
             let status: "available" | "locked";
             if(step.id <= currentLevel) {
@@ -60,14 +62,20 @@ export default function WebDevPath() {
 	    }
  
             return (
-             <div key={step.id} className="flex flex-col items-center">
-             {/* Dashed Line */}
-             {step.id !== 1 && <div className="h-10 border-l-2 border-dashed border-gray-400"></div>}
-             {/* Step Circle */}
-             <CylinderLevel level={step.id} status={status} onClick={() => handleLevelClick(step.id)} />
-             {/* Step Label */}
-             <p className="mt-2 text-sm text-gray-700">{step.name}</p>
-            </div>);
+             <div key={step.id} className={`flex w-full max-w-lg ${isLeft ? "justify-content" : "justify-end"}`}>
+              <div className="relative flex flex-col items-center">
+               {/* Dashed Line */}
+               {index !== 0 && (
+                <div
+                 className={`absolute h-4 w-px bg-gray-400 transform ${isLeft ? "rotate-45 -translate-x-30 -translate-y-8" : "-rotate-45 translate-x-30 -translate-y-8"} style={{ borderLeft: "2px dashed gray" }}`}
+                >
+                </div>)}
+               {/* Step Circle */}
+               <CylinderLevel level={step.id} status={status} onClick={() => handleLevelClick(step.id)} />
+               {/* Step Label */}
+               <p className="mt-2 text-sm text-gray-700">{step.name}</p>
+              </div>
+             </div>);
            }
 
           )
