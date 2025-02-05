@@ -73,12 +73,9 @@ export default function WebDevPath() {
                {/* Avatar (Positioned next to the current level) */}
                   {step.id === currentLevel && (
                     <div
-                      style={{
-                        position: "absolute",
-                        top: "50%", // Centers the avatar vertically
-                        transform: "translateY(-50%)", // Ensures perfect centering
-                        [isLeft ? "left" : "right"]: "4rem", // Pushes it next to the cylinder
-                      }}
+                      className={`absolute top-1/2 -translate-y-1/2 ${
+    isLeft ? "left-16" : "right-16"
+  } transition-all duration-500`}
                     >
                       <Image
                         src="/character.png"
