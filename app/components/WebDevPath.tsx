@@ -42,11 +42,6 @@ export default function WebDevPath() {
 
       {/* Path Container */}
       <div className="relative flex flex-col items-center mt-10 space-y-10">
-        {/* Application Submission */}
-        <div className="flex space-x-4">
-          <Image src="/character.png" alt="Character" className="hidden md:block" width={90} height={90} />
-        </div>
-
         {/* Dashed Line & Steps */}
         <div className="flex flex-col items-center gap-8 mt-8">
         {
@@ -74,6 +69,27 @@ export default function WebDevPath() {
                <CylinderLevel level={step.id} status={status} onClick={() => handleLevelClick(step.id)} />
                {/* Step Label */}
                <p className="mt-2 text-sm text-gray-700">{step.name}</p>
+
+               {/* Avatar (Positioned next to the current level) */}
+                  {step.id === currentLevel && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "50%", // Centers the avatar vertically
+                        transform: "translateY(-50%)", // Ensures perfect centering
+                        [isLeft ? "left" : "right"]: "4rem", // Pushes it next to the cylinder
+                      }}
+                    >
+                      <Image
+                        src="/character.png"
+                        alt="Character"
+                        className="rounded-full"
+                        width={50} // Adjust size as needed
+                        height={50}
+                      />
+                    </div>
+                  )}
+
               </div>
              </div>);
            }
