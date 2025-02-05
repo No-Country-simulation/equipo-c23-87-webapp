@@ -41,9 +41,9 @@ export default function WebDevPath() {
       </div>
 
       {/* Path Container */}
-      <div className="w-full relative flex flex-col items-center mt-10 space-y-10">
+      <div className="w-full relative flex flex-col items-center">
         {/* Dashed Line & Steps */}
-        <div className="w-full flex flex-col items-center gap-8 mt-8">
+        <div className="w-full flex flex-col items-center gap-8 mt-[3%]">
         {
           steps.map((step, index) => {
             // Determine zigzag pattern
