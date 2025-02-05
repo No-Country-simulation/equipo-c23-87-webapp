@@ -41,9 +41,9 @@ export default function WebDevPath() {
       </div>
 
       {/* Path Container */}
-      <div className="relative flex flex-col items-center mt-10 space-y-10">
+      <div className="w-full relative flex flex-col items-center mt-10 space-y-10">
         {/* Dashed Line & Steps */}
-        <div className="flex flex-col items-center gap-8 mt-8">
+        <div className="w-full flex flex-col items-center gap-8 mt-8">
         {
           steps.map((step, index) => {
             // Determine zigzag pattern
@@ -58,7 +58,7 @@ export default function WebDevPath() {
  
             return (
              <div key={step.id} className={`flex w-full max-w-lg ${isLeft ? "justify-content" : "justify-end"}`}>
-              <div className="relative flex flex-col items-center">
+              <div className="w-[70%] relative flex flex-col items-center">
                {/* Dashed Line */}
                {index !== 0 && (
                 <div
@@ -83,9 +83,9 @@ export default function WebDevPath() {
                       <Image
                         src="/character.png"
                         alt="Character"
-                        className="rounded-full"
-                        width={50} // Adjust size as needed
-                        height={50}
+                        className="rounded-full pb-16"
+                        width={75} // Adjust size as needed
+                        height={75}
                       />
                     </div>
                   )}
