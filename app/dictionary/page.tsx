@@ -25,38 +25,7 @@ const InteractiveImage = () => {
         className="bg-white p-6 rounded-lg shadow-lg text-center"
       >
         <h2 className="text-2xl font-bold">📖 Resume</h2>
-
-         <p className="mt-2 text-lg">
-            When referring to your CV in English, the most common terms are:
-          </p>
-          <ul className="list-disc list-inside mt-4 space-y-2">
-            <li>
-              <strong>CV (Curriculum Vitae):</strong> Widely understood in British English and in
-              academic or research contexts worldwide.
-              <br />
-              <em>Example:</em> "I am attaching my CV for your review."
-            </li>
-            <li>
-              <strong>Résumé (or Resume):</strong> Primarily used in American English and more common
-              in business, corporate, and industry roles.
-              <br />
-              <em>Example:</em> "Please find my résumé attached."
-            </li>
-          </ul>
-          <p className="mt-4 text-lg">
-            <strong>Which Should You Use?</strong>
-          </p>
-          <ul className="list-disc list-inside mt-2 space-y-2">
-            <li>
-              <strong>CV:</strong> Use this if you are applying for roles in academia, research, or
-              in countries where British English is common (e.g., the UK, Europe, Australia).
-            </li>
-            <li>
-              <strong>Résumé:</strong> Use this for most business, corporate, or non-academic job
-              applications, particularly in the United States or Canada.
-            </li>
-          </ul>
-
+        <p className="mt-2 text-lg">Saved word</p>
         <button
           onClick={closeResumeModal}
           className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
@@ -120,7 +89,7 @@ const InteractiveImage = () => {
           className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
           onClick={closeModal}
         >
-          <div onClick={(e) => e.stopPropagation()}>
+          <div onClick={(e) => e.stopPropagation()} className="bg-white p-6 rounded-lg shadow-lg">
             <Image src="/note_details.png" alt="Note Details" width={500} height={600} className="object-contain" />
             <button
               onClick={closeModal}
