@@ -1,12 +1,15 @@
+// app/desktop-active/page.tsx
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/solid";
 import "../ui/global.css";
+import { useLevel } from "../context/LevelContext"; // Import the context
 
 const InteractiveImage = () => {
   const router = useRouter();
+  const { currentLevel, setCurrentLevel } = useLevel(); // Use global state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const [isCongratsModalOpen, setIsCongratsModalOpen] = useState(false);
@@ -16,8 +19,9 @@ const InteractiveImage = () => {
   const closeResumeModal = () => setIsResumeModalOpen(false);
   const closeCongratsModal = () => setIsCongratsModalOpen(false);
 
-  // Function to navigate to the root page
+  // Function to navigate to the root page and update the level
   const returnToHomePage = () => {
+    setCurrentLevel(currentLevel + 1); // Increment the current level
     router.push("/"); // Navigate to the root page
   };
 
@@ -25,26 +29,22 @@ const InteractiveImage = () => {
   const ResumeModal = () => (
     <div
       className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
-      onClick={closeResumeModal} // Close when clicking outside
+      onClick={closeResumeModal}
     >
       <div
-        onClick={(e) => e.stopPropagation()} // Prevent modal close on content click
+        onClick={(e) => e.stopPropagation()}
         className="bg-white p-6 rounded-lg shadow-lg text-center max-w-md w-full"
       >
         <h2 className="text-2xl font-bold">📖 Resume</h2>
-        <p className="mt-2 text-lg">
-          When referring to your CV in English, the most common terms are:
-        </p>
+        <p className="mt-2 text-lg">When referring to your CV in English, the most common terms are:</p>
         <ul className="list-disc list-inside mt-4 space-y-2">
           <li>
-            <strong>CV (Curriculum Vitae):</strong> Widely understood in British English and in
-            academic or research contexts worldwide.
+            <strong>CV (Curriculum Vitae):</strong> Widely understood in British English and in academic or research contexts worldwide.
             <br />
             <em>Example:</em> "I am attaching my CV for your review."
           </li>
           <li>
-            <strong>Résumé (or Resume):</strong> Primarily used in American English and more common
-            in business, corporate, and industry roles.
+            <strong>Résumé (or Resume):</strong> Primarily used in American English and more common in business, corporate, and industry roles.
             <br />
             <em>Example:</em> "Please find my résumé attached."
           </li>
@@ -54,12 +54,10 @@ const InteractiveImage = () => {
         </p>
         <ul className="list-disc list-inside mt-2 space-y-2">
           <li>
-            <strong>CV:</strong> Use this if you are applying for roles in academia, research, or
-            in countries where British English is common (e.g., the UK, Europe, Australia).
+            <strong>CV:</strong> Use this if you are applying for roles in academia, research, or in countries where British English is common (e.g., the UK, Europe, Australia).
           </li>
           <li>
-            <strong>Résumé:</strong> Use this for most business, corporate, or non-academic job
-            applications, particularly in the United States or Canada.
+            <strong>Résumé:</strong> Use this for most business, corporate, or non-academic job applications, particularly in the United States or Canada.
           </li>
         </ul>
         <button
@@ -76,17 +74,17 @@ const InteractiveImage = () => {
   const CongratsModal = () => (
     <div
       className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
-      onClick={closeCongratsModal} // Close when clicking outside
+      onClick={closeCongratsModal}
     >
       <div
-        onClick={(e) => e.stopPropagation()} // Prevent modal close on content click
+        onClick={(e) => e.stopPropagation()}
         className="bg-white p-6 rounded-lg shadow-lg text-center max-w-md w-full"
       >
         <h2 className="text-2xl font-bold">Resume</h2>
-        <p className="mt-2">Congrats for trying this very first version of the techen flow.</p>
+        <p className="mt-2">Congrats for trying this very first version of the tech flow.</p>
         <div className="flex justify-center mt-4">
           <button
-            onClick={returnToHomePage} // Navigate to the root page
+            onClick={returnToHomePage}
             className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
           >
             Return to Home Page

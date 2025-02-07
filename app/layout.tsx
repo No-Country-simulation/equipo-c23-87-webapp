@@ -1,11 +1,12 @@
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+// app/layout.tsx
+import { LevelProvider } from "./context/LevelContext";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <LevelProvider>{children}</LevelProvider>
+      </body>
     </html>
   );
 }
