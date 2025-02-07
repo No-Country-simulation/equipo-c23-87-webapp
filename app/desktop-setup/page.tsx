@@ -1,15 +1,17 @@
 "use client";
+
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/solid"; 
+import '../ui/global.css';
 
 const InteractiveImage = () => {
   const router = useRouter();
 
   return (
-    <div className="relative w-screen h-screen z-0"> {/* Create a stacking context */}
+    <div className="relative w-screen h-screen">
       {/* ✅ Background Image - Forced Behind Everything */}
-      <div className="absolute inset-0 z-0"> {/* Remove -z-50 */}
+      <div className="fixed inset-0 -z-50">
         <Image 
           src="/tail.png" 
           alt="Interactive Desk Setup" 
@@ -42,3 +44,4 @@ const InteractiveImage = () => {
 };
 
 export default InteractiveImage;
+
