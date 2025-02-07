@@ -6,13 +6,11 @@ import Image from 'next/image';
 import Header from "./Header";
 import CylinderLevel from "./CylinderLevel";
 import { steps } from "../lib/steps";
+import { useRouter } from "next/navigation";
 
 export default function WebDevPath() {
   // Track the user´s current level with the state
   const [currentLevel, setCurrentLevel] = useState(1);
-
-  useEffect(() => {
-  }, [currentLevel]);
 
   const handleLevelClick = (level: number) => {
    // If the level is the current level, move to the next one
@@ -26,6 +24,15 @@ export default function WebDevPath() {
     alert(`You´ve already passed this level. You are currently in level ${currentLevel}`);
    }
   }
+
+  const router = useRouter();
+  const handleLevelEvent = (levelId: number) => {
+  if (levelId === 1) {
+    router.push("/desktop-setup"); // Ensure the correct path
+  } else {
+    alert(`This level is locked. Please, go to ${levelId - 1} level first`);
+  }
+ };
 
   return (
     <div className="flex flex-col items-center w-full px-4 min-h-screen bg-white">
@@ -66,16 +73,16 @@ export default function WebDevPath() {
                 >
                 </div>)}
                {/* Step Circle */}
-               <CylinderLevel level={step.id} status={status} onClick={() => handleLevelClick(step.id)} />
+               <CylinderLevel level={step.id} status={status} onClick={() => handleLevelEvent(step.id)} />
                {/* Step Label */}
-               <p className="mt-2 text-sm text-gray-700">{step.name}</p>
+               <p className="mt-1 text-sm text-gray-700">{step.name}</p>
 
                {/* Avatar (Positioned next to the current level) */}
                   {step.id === currentLevel && (
                     <div
                       className={`absolute top-1/2 -translate-y-1/2 ${
-    isLeft ? "left-16" : "right-16"
-  } transition-all duration-500`}
+		       isLeft ? "left-8" : "right-8"
+		      } transition-all duration-500`}
                     >
                       <Image
                         src="/character.png"
