@@ -39,7 +39,6 @@ const InteractiveImage = () => {
           {/* 🔥 Clickable Areas */}
           <div
             className="absolute top-[6%] left-[49.5%] w-[5%] h-[5%] bg-red-500 opacity-50 cursor-pointer z-20"
-            onClick={() => router.push("/phone-setup")}
           ></div>
 
           {/* Close Button */}
@@ -91,11 +90,6 @@ const InteractiveImage = () => {
             height={50}
             className="object-contain"
           />
-
-          {/* 🎈 "Click Me" Notification */}
-          <div className="absolute -top-[80%] -right-2 bg-yellow-400 text-black text-xs font-bold px-4 py-1 rounded-full animate-bounce">
-            Click Me!
-          </div>
         </div>
       </div>
 
@@ -109,6 +103,28 @@ const InteractiveImage = () => {
 
       {/* Render Modal Conditionally */}
       {isModalOpen && <Modal onClose={handleCloseModal} />}
+
+      {/* 🔥 Clickable Areas */}
+       <div
+        className="absolute top-[18%] left-[33%] w-[35%] h-[35%] cursor-pointer z-20"
+        onClick={() => alert("Dektop")}
+       > 
+       {/* 🎈 "Click Me" Notification */}
+       <div className="absolute top-[1%] right-16 bg-yellow-400 text-black text-xs font-bold px-4 py-1 rounded-full animate-bounce">
+        Click Me!
+       </div>
+      </div>
+
+      <div
+        className="absolute top-[60%] left-[69.5%] w-[4%] h-[15%] cursor-pointer z-20"
+        onClick={() => alert("Dictionary")}
+       > 
+       {/* 🎈 "Click Me" Notification */}
+       <div className="absolute top-[20%] bg-yellow-400 text-black text-xs font-bold px-4 py-1 rounded-full animate-bounce">
+        Click Me!
+       </div>
+      </div>
+
     </div>
   );
 };
