@@ -21,6 +21,27 @@ const InteractiveImage = () => {
         />
       </div>
 
+      {/* 🖼️ Board Image - Top Left Corner */}
+      <div className="absolute top-0 right-4 w-[400px] h-[300px] z-10"> {/* Adjust size as needed */}
+        <Image
+          src="/board.png"
+          alt="Board"
+          width={400} // Adjust width to match the size of the board
+          height={300} // Adjust height to match the size of the board
+          className="object-contain" // Ensures the image fits within the container
+        />
+        {/* 📄 Note Image - Top Left Corner of Board */}
+        <div className="absolute top-[35%] left-16 w-[50px] h-[50px] z-20"> {/* Adjust size as needed */}
+          <Image
+            src="/note.png"
+            alt="Note"
+            width={50} // Adjust width to match the size of the note
+            height={50} // Adjust height to match the size of the note
+            className="object-contain" // Ensures the image fits within the container
+          />
+        </div>
+      </div>	
+
       {/* 🔙 Back Arrow - Always Visible */}
       <button 
         className="absolute top-4 left-4 z-50 text-white bg-gray-800 p-2 rounded-full hover:bg-gray-600 transition"
